@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&subset=latin-ext');
+
+body{
+  font-family: 'Quicksand', sans-serif;
+  background: $body-bg;
+}
+.web-header{
+  width: 100%;
+  text-align: center;
+}
+.numbers{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 1240px;
+  margin: 10px auto;
+  .number{
+    width: 80px;
+    height: 80px;
+    background: $number-bg;
+    border-radius: 50%;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px rgba(2,2,2,0.1);
+    font-size: 25px;
+    font-weight: bold;
+    color: $number-color;
+    transition: all .3s ease;
+    &:hover{
+      background: $number-color;
+      color: $number-bg;
+      cursor: pointer;
+    }
+  }
+  .number.active{
+      background: $number-color;
+      color: $number-bg;
+  }
+}
+.start{
+  width: 300px;
+  display: block;
+  margin: 70px auto;
+  background: transparent;
+  border: 1.5px solid $button;
+  font-size: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 30px;
+  color: $button;
+  transition: all .3s ease;
+  outline: none !important;
+  &:hover{
+    cursor: pointer;
+    color: #fff;
+    background: $button;
+  }
+}
+.results{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .elo{
+    margin: 10px 30px;
+    color: #f4df42;
+    font-size: 30px;
+    font-weight: 800;
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 0 5px rgba(2,2,2,0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.winner-window{
+  width: 99vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  transition: all .3s ease;
+  .winner-info{
+    width: 600px;
+    height: 300px;
+    background: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    .reload{
+      background: transparent;
+      width: 250px;
+      padding: 10px;
+      color: $button;
+      border: 1px solid $button;
+      border-radius: 30px;
+      font-size: 18px;
+      &:hover{
+        background: $button;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+
+
+}
+.flex{
+  display: flex;
+}

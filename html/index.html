@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Lotto</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../scss/global.css">
+    </head>
+</head>
+<body>
+    <h1 class="web-header">Wybierz sześć liczb i odbierz dużą wygraną! </h1>
+    <div class="numbers">
+        <div class="number">1</div>
+        <div class="number">2</div>
+        <div class="number">3</div>
+        <div class="number">4</div>
+        <div class="number">5</div>
+        <div class="number">6</div>
+        <div class="number">7</div>
+        <div class="number">8</div>
+        <div class="number">9</div>
+        <div class="number">10</div>
+        <div class="number">11</div>
+        <div class="number">12</div>
+        <div class="number">13</div>
+        <div class="number">14</div>
+        <div class="number">15</div>
+        <div class="number">16</div>
+        <div class="number">17</div>
+        <div class="number">18</div>
+        <div class="number">19</div>
+        <div class="number">20</div>
+        <div class="number">21</div>
+        <div class="number">22</div>
+        <div class="number">23</div>
+        <div class="number">24</div>
+        <div class="number">25</div>
+        <div class="number">26</div>
+        <div class="number">27</div>
+        <div class="number">28</div>
+        <div class="number">29</div>
+        <div class="number">30</div>
+        <div class="number">31</div>
+        <div class="number">32</div>
+        <div class="number">33</div>
+        <div class="number">34</div>
+        <div class="number">35</div>
+        <div class="number">36</div>
+        <div class="number">37</div>
+        <div class="number">38</div>
+        <div class="number">39</div>
+        <div class="number">40</div>
+        <div class="number">41</div>
+        <div class="number">42</div>
+        <div class="number">43</div>
+        <div class="number">44</div>
+        <div class="number">45</div>
+        <div class="number">46</div>
+        <div class="number">47</div>
+        <div class="number">48</div>
+        <div class="number">49</div>
+    </div>
+    <button class="start">Losuj</button>
+    <div class="results">
+        <div class="elo"></div>
+        <div class="elo"></div>
+        <div class="elo"></div>
+        <div class="elo"></div>
+        <div class="elo"></div>
+        <div class="elo"></div>
+    </div>
+    <div class="winner-window">
+        <div class="winner-info">
+            <h2 class="winner-text">Trafiłeś: <span class="sum"></span></h2>
+            <button class="reload">Zagraj ponownie</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        let number = document.querySelectorAll('.number');
+        let btn = document.querySelector('.start');
+        let sumDiv = document.querySelector('.sum');
+        const choice = [];
+        const result = [];
+        let clicks = 0;
+       function numberChoice() {
+
+           for (let i = 0; i<number.length; i++){
+               number[i].addEventListener('click', function () {
+                   if(clicks < 6 ){
+                       if(this.classList.contains('active')){
+                           this.classList.remove('active');
+                           for(let i = 0; i<choice.length; i++){
+                               if(this.innerHTML == choice[i]){
+                                   choice.splice(i, i);
+                               }
+                           }
+                           clicks--;
+
+                       }else {
+                           this.classList.add('active');
+                           choice.push(this.innerHTML);
+                           clicks++;
+                       }
+                   }
+                   else{
+                       if(this.classList.contains('active')){
+                           this.classList.remove('active');
+                           for(let i = 0; i<choice.length; i++){
+                               if(this.innerHTML == choice[i]){
+                                   choice.splice(i, i);
+                               }
+                           }
+                           clicks--;
+
+                       }else{
+                           return false;
+                       }
+                   }
+               });
+           }
+       }
+        let resultsDiv = document.querySelectorAll('.elo');
+      function btnClick() {
+           const min = 1;
+           const max = 49;
+           let sum = 0;
+           btn.addEventListener('click', function () {
+                  if(clicks == 6){
+                      for (let i = 0; i<6; i++){
+                          result.push(parseInt(Math.random()*(max-min+1)+min));
+                          resultsDiv[i].innerHTML = result[i];
+                      }
+
+                      for(let i = 0; i<6; i++){
+                          let currentNumber = result[i];
+                          for(let j = 0; j<6; j++){
+                              if(currentNumber == choice[j]){
+                                  sum++;
+                              }
+                          }
+
+                      }
+                      sumDiv.innerHTML = sum;
+                      setTimeout(function () {
+                          document.querySelector('.winner-window').classList.add('flex');
+                      }, 400);
+                  }
+                  else{
+                      alert('Wybierz 6 liczb');
+                  }
+
+           });
+       }
+       function reload() {
+           let reloadBtn = document.querySelector('.reload');
+           reloadBtn.addEventListener('click', function(){
+            location.reload();
+       });
+       }
+        numberChoice();
+       btnClick();
+       reload();
+    </script>
+</body>
+</html>
