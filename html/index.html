@@ -128,8 +128,15 @@
            btn.addEventListener('click', function () {
                   if(clicks == 6){
                       for (let i = 0; i<6; i++){
-                          result.push(parseInt(Math.random()*(max-min+1)+min));
-                          resultsDiv[i].innerHTML = result[i];
+                          let choiceNumber = parseInt(Math.random()*(max-min+1)+min);
+                          for(let j; j<6; j++){
+                              if(choiceNumber == result[i]){
+                                  choiceNumber+=1;
+                              }else{
+                                  result.push(choiceNumber);
+                                  resultsDiv[i].innerHTML = result[i];
+                              }
+                          }
                       }
 
                       for(let i = 0; i<6; i++){
